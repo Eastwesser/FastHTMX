@@ -94,5 +94,3 @@ uvicorn==0.30.6
 ```
 
 Project started: 3rd September 2024
-
-"# FastHTMX" 
