@@ -40,32 +40,33 @@ This is a simple FastAPI project template using HTMX for dynamic web application
 
 You can run tests using `pytest`:
 
-    ```sh
-    pytest
-    ```
+```sh
+pytest
+```
 
 You can also use http files to manually test endpoints using a tool like HTTPie.
 
 5. **Environment Variables**
-6. 
+
 This project uses a .env file to manage environment variables. Example:
 
 .env
-    ```text
-    PROJECT_NAME=FastHTMX
-    API_V1_STR=/api/v1
-    CSRF_SECRET=your-secret-key
-    ```
+
+```text
+PROJECT_NAME=FastHTMX
+API_V1_STR=/api/v1
+CSRF_SECRET=your-secret-key
+```
 
 ## Requirements
-Python 3.10+
-FastAPI
-HTMX
-Jinja2
-Starlette CSRF Middleware
-Uvicorn
+- Python 3.10+
+- FastAPI
+- HTMX
+- Jinja2
+- Starlette CSRF Middleware
+- Uvicorn
 
-requirements.txt:
+### requirements.txt:
 
 ```text
 annotated-types==0.7.0
