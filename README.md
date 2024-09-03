@@ -93,4 +93,5 @@ typing_extensions==4.12.2
 uvicorn==0.30.6
 ```
 
-Project started: 3rd September 2024"# FastHTMX" 
+Project started: 3rd September 2024
+"# FastHTMX" 
