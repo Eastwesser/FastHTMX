@@ -1,0 +1,14 @@
+<h3>Clicker</h3>
+
+{#HTMX version:#}
+<div>
+    <div id="clicked-times">
+        {% include 'clicker/clicker-components/click-count.html' %}
+    </div>
+    <button
+        hx-post="{{ url_for('clicker_app.inc-click') }}"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token() }}"}'
+        hx-target="#clicked-times"
+        >Click!
+    </button>
+</div>

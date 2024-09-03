@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Ping
+{% endblock %}
+
+{% block body %}
+    <h1>Send Ping:</h1>
+    <div>
+            <button
+                hx-post="{{ url_for('examples_app.ping') }}"
+                hx-headers='{"X-CSRFToken": "{{ csrf_token() }}"}'
+            >Send ping
+            </button>
+        <br>
+            <button
+                hx-post="{{ url_for('examples_app.ping') }}" hx-trigger="click[ctrlKey]"
+                hx-headers='{"X-CSRFToken": "{{ csrf_token() }}"}'
+            >Send ping (only with ctrl+click)
+            </button>
+        <br>
+            <button
+                hx-post="{{ url_for('examples_app.ping') }}" hx-trigger="click[shiftKey]"
+                hx-headers='{"X-CSRFToken": "{{ csrf_token() }}"}'
+            >Send ping (only with shift+click)
+            </button>
+    </div>
+    {% include 'examples/components/footer.html' %}
+{% endblock %}

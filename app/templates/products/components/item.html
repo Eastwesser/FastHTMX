@@ -1,0 +1,9 @@
+<li
+    id="product-{{ product.id }}"
+    class="product-item fade-me-out"
+><a href="{{ url_for('products_app.details', product_id=product.id) }}">
+    {{ product.name }}
+    ${{ product.price }}
+</a>
+    {% include 'products/components/delete-button.html' %}
+</li>

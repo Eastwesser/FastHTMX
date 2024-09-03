@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Clicker
+{% endblock %}
+{% block body %}
+{#    <h3>Clicker</h3>#}
+{##}
+{#HTMX version:#}
+{#    <div>#}
+{#        <div id="clicked-times">#}
+{#            {% include 'clicker/clicker-components/click-count.html' %}#}
+{#        </div>#}
+{#        <button#}
+{#            hx-post="{{ url_for('clicker_app.inc-click') }}"#}
+{#            hx-target="#clicked-times"#}
+{#            >Click!#}
+{#        </button>#}
+{#    </div>#}
+{#HTMX variant above#}
+
+{#No HTMX variant below#}
+{#    <form method="post">#}
+{#        <div>Clicked times: {{ count }}</div>#}
+{#        <button type="submit">Click me!</button>#}
+{#    </form>#}
+{#No HTMX variant above#}
+
+    {% include 'clicker/clicker-components/clicker-body.html' %}
+    {% include 'components/footer-to-index.html' %}
+{% endblock %}

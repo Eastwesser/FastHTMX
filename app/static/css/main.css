@@ -1,0 +1,16 @@
+.loading-animation {
+    display: none;
+}
+
+.htmx-request .loading-animation {
+    display: inline;
+}
+
+.htmx-request.loading-animation {
+    display: inline;
+}
+
+.fade-me-out.htmx-swapping {
+    opacity: 0;
+    transition: opacity 7000ms ease-out;
+}

@@ -1,0 +1,55 @@
+{% from 'macros/error-list.html' import errors_list %}
+
+<form
+    id="create-product"
+    hx-post="{{ url_for('products_app.create') }}"
+{#    hx-target="#products-list"#}
+{#    hx-swap="beforeend"#}
+    hx-swap="outerHTML"
+{#    hx-on::after-request="if (event.detail.successful) this.reset()"#}
+>
+{#        {{ form.hidden_tag() }}#}
+{##}
+{##}
+{#    <div>#}
+{#        {{ form.name.label }} {{ form.name(size=20) }}#}
+{##}
+{#        <label for="product-name">Product name</label>#}
+{#        <input#}
+{#            type="text"#}
+{#            id="product-name"#}
+{#            name="product-name"#}
+{#            value="{{ product_name }}"#}
+{#            required>#}
+{##}
+{#        {% if form.name.errors %}#}
+{#            {{ errors_list(form.name.errors) }}#}
+{#        {% endif %}#}
+{#    </div>#}
+{##}
+{#    <div>#}
+{#        {{ form.price.label }} {{ form.price }}#}
+{##}
+{#        <label for="product-price">Product price</label>#}
+{#        <input#}
+{#            type="number"#}
+{#            id="product-price"#}
+{#            name="product-price"#}
+{#            min="1"#}
+{#            max="99999"#}
+{#            required#}
+{#        >#}
+{#        {% if form.name.errors %}#}
+{#            {{ errors_list(form.name.errors) }}#}
+{#        {% endif %}#}
+{#    </div>#}
+
+{#    {% if error %}#}
+{#    {% if form.errors %}#}
+{#        <div style="color: red;">{{ error }}</div>#}
+{#    {% endif %}#}
+{##}
+{#    <button type="submit">Add</button>#}
+    {% include 'products/components/form-body.html' %}
+    {{ form.submit }}
+</form>

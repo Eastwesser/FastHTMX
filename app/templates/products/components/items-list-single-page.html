@@ -1,0 +1,41 @@
+{#{% include 'products/components/items-list.html' %}#}
+<ul id="products-list">
+    {%  include 'products/components/only-items.html' %}
+
+{% if prev_page %}
+    <button
+{#        GET query for the prev page, with pagination parameters    #}
+        hx-get="{{
+                url_for(
+                    'products_app.list',
+                    page=prev_page,
+                    per_page=per_page
+                ) }}"
+        hx-push-url="true"
+        hx-target="#products-list"
+        hx-swap="outerHTML"
+    >
+        &lt;&lt; {{ prev_page }}
+        {% include 'components/loading-animation.html' %}
+    </button>
+{% endif %}
+
+{% if next_page %}
+    <span style="margin: 0 20px"></span>
+    <button
+{#        GET query for the next page, with pagination parameters    #}
+        hx-get="{{
+                url_for(
+                    'products_app.list',
+                    page=next_page,
+                    per_page=per_page
+                ) }}"
+        hx-push-url="true"
+        hx-target="#products-list"
+        hx-swap="outerHTML"
+    >
+        {% include 'components/loading-animation.html' %}
+        {{ next_page }} &gt;&gt;
+    </button>
+{% endif %}
+</ul>

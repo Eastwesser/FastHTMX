@@ -1,0 +1,31 @@
+<button
+        hx-delete="{{ url_for(
+        'products_app.delete',
+        product_id=product.id,
+        redirect=True
+    ) }}"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token() }}"}'
+        {#    hx-swap="outerHTML swap:3000ms"#}
+        {#    add animation in hx-indicator#}
+        {#    hx-indicator="#product-{{ product.id }}"#}
+        {#    hx-indicator="closest .loading-animation"#}
+        hx-indicator="#loading"
+        hx-push-url="true"
+        hx-target="body"
+        hx-confirm="Are you sure you want to delete this product?"
+        {#    hx-target="closest .product-item"#}
+        {#    hx-target="closest li"#}
+        style="cursor: pointer;"
+>
+    Delete
+    <img
+            src="{{ url_for('static', filename="img/trash.svg") }}"
+            alt="delete"
+            width="20rem"
+            height="20rem"
+    >
+
+</button>
+<span id="loading">
+    {% include 'components/loading-animation.html' %}
+</span>

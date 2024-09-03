@@ -1,0 +1,18 @@
+{% extends 'products/base.html' %}
+
+{% block title %}
+    Products
+{% endblock %}
+
+{% block body %}
+    <h1>Products</h1>
+
+        <div>
+            {% include 'products/components/form.html' %}
+        </div>
+
+{#    {% include 'products/components/items-list-reveal.html' %}#}
+    {% include 'products/components/items-list-single-page.html' %}
+
+    {% include 'components/footer-to-index.html' %}
+{% endblock %}

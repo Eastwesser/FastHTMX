@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/main.css') }}"
+    >
+</head>
+{#<body hx-boost="true">#}
+<body>
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+<script
+    src="https://unpkg.com/htmx.org@2.0.0"
+    integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
+    crossorigin="anonymous">
+</script>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", (event) => {
+    document.body.addEventListener('htmx:beforeSwap', function (evt) {
+      if ([204, 422].indexOf(evt.detail.xhr.status) >= 0) {
+        // allow 422 responses to swap
+        // as we are using this as a signal
+        // that a form was submitted with bad data
+        // and want to rerender with the errors
+        //
+        // set isError to `false`
+        // to avoid error logging in console
+        evt.detail.shouldSwap = true;
+        evt.detail.isError = false;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

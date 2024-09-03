@@ -1,0 +1,16 @@
+{%  include 'products/components/only-items.html' %}
+
+{% if next_page %}
+    <span
+        hx-trigger="revealed"
+        hx-get="{{ url_for(
+            'products_app.list',
+            only_items=True,
+            page=next_page,
+            per_page=per_page
+        ) }}"
+        hx-swap="outerHTML"
+    >
+        {% include 'components/loading-animation.html'  %}
+    </span>
+{% endif %}

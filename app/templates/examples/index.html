@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Examples list
+{% endblock %}
+
+{% block body %}
+    <h1>Examples:</h1>
+    <ul hx-boost="true">
+        <li>
+            <a href="{{ url_for('examples_app.ping') }}">
+                Example Ping
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('examples_app.hover') }}">
+                Example Hover
+            </a>
+        </li>
+    </ul>
+
+    {% include 'components/footer-to-index.html' %}
+
+{% endblock %}
