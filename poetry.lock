@@ -196,6 +196,23 @@ all = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "httpx (>
 standard = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "httpx (>=0.23.0)", "jinja2 (>=2.11.2)", "python-multipart (>=0.0.7)", "uvicorn[standard] (>=0.12.0)"]
 
 [[package]]
+name = "fastapi-csrf-protect"
+version = "0.3.4"
+description = "Stateless implementation of Cross-Site Request Forgery (XSRF) Protection by using Double Submit Cookie mitigation pattern"
+optional = false
+python-versions = "<4.0,>=3.8"
+files = [
+    {file = "fastapi_csrf_protect-0.3.4-py3-none-any.whl", hash = "sha256:78ee1d5bcdc10d06f0516fa8ed9e00b4fa8c8dfa8e93bada6ede7a7bba7507ae"},
+    {file = "fastapi_csrf_protect-0.3.4.tar.gz", hash = "sha256:a7d170d4e119c22bae8a4f5922529767f4d69c4c69744865c03f939e399e5822"},
+]
+
+[package.dependencies]
+fastapi = ">=0,<1"
+itsdangerous = ">=2.0.1,<3.0.0"
+pydantic = ">=2.0.0,<3.0.0"
+pydantic-settings = ">=2.0.0,<3.0.0"
+
+[[package]]
 name = "greenlet"
 version = "3.0.3"
 description = "Lightweight in-process concurrent programming"
@@ -334,6 +351,17 @@ python-versions = ">=3.6"
 files = [
     {file = "idna-3.8-py3-none-any.whl", hash = "sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac"},
     {file = "idna-3.8.tar.gz", hash = "sha256:d838c2c0ed6fced7693d5e8ab8e734d5f8fda53a039c0164afb0b82e771e3603"},
+]
+
+[[package]]
+name = "itsdangerous"
+version = "2.2.0"
+description = "Safely pass data to untrusted environments and back."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "itsdangerous-2.2.0-py3-none-any.whl", hash = "sha256:c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef"},
+    {file = "itsdangerous-2.2.0.tar.gz", hash = "sha256:e0050c0b7da1eea53ffaf149c0cfbb5c6e2e2b69c4bef22c81fa6eb73e5f6173"},
 ]
 
 [[package]]
@@ -672,6 +700,21 @@ anyio = ">=3.4.0,<5"
 full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart (>=0.0.7)", "pyyaml"]
 
 [[package]]
+name = "starlette-csrf"
+version = "3.0.0"
+description = "Starlette middleware implementing Double Submit Cookie technique to mitigate CSRF"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "starlette_csrf-3.0.0-py3-none-any.whl", hash = "sha256:aac29b366e83621d3fc56be690866e16f3c56df91ab5e184b77950540a4e2761"},
+    {file = "starlette_csrf-3.0.0.tar.gz", hash = "sha256:7afaca8c72cc3c726e5942778af53454607ca3e653fd86cd75ee35d8cd1cfa77"},
+]
+
+[package.dependencies]
+itsdangerous = ">=2.0.1,<3.0.0"
+starlette = ">=0.14.2"
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -945,4 +988,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "32ca0272da100a38de56d7c4ad39f7f2c5354cc1306deddd1d85c78fe922a37b"
+content-hash = "daaa59f30319c2388af3796ec141880386d8c30be3822d943a090352bd9206f0"
