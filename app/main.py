@@ -13,6 +13,7 @@ from app.api.api_v1 import router as api_router
 from app.api.api_v1.endpoints.clicker import router as clicker_router
 from app.api.api_v1.endpoints.products import router as products_router
 from core.config import settings
+from create_fastapi_app import create_app
 
 # Инициализация FastAPI
 app = FastAPI(
@@ -67,6 +68,14 @@ async def fetch_data(request: Request):
 @app.post("/submit", response_class=HTMLResponse)
 async def submit_form(request: Request, name: str = Form(...)):
     return f"<p>Hello, {name}!</p>"
+
+main_app = create_app(
+    create_custom_static_urls=True,
+)
+
+main_app.include_router(
+    api_router,
+)
 
 
 # Запуск приложения
