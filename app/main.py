@@ -4,9 +4,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi_htmx import htmx_init
-from starlette_csrf import CSRFMiddleware
-
 from starlette.requests import Request
+from starlette_csrf import CSRFMiddleware
 
 from app.api.api_v1 import router as api_router
 # Импорт маршрутов
@@ -69,6 +68,7 @@ async def fetch_data(request: Request):
 async def submit_form(request: Request, name: str = Form(...)):
     return f"<p>Hello, {name}!</p>"
 
+
 main_app = create_app(
     create_custom_static_urls=True,
 )
@@ -76,7 +76,6 @@ main_app = create_app(
 main_app.include_router(
     api_router,
 )
-
 
 # Запуск приложения
 if __name__ == "__main__":
