@@ -1,11 +1,11 @@
 from typing import Annotated
 
-from core.models import db_helper
-from core.schemas.user import (
+from ....core.models import db_helper
+from ....core.schemas.user import (
     UserRead,
     UserCreate,
 )
-from crud import users as users_crud
+from app.crud import users as users_crud
 from fastapi import (
     APIRouter,
     Depends,

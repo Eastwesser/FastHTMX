@@ -3,8 +3,8 @@ from typing import Sequence
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.models import User
-from core.schemas.user import UserCreate
+from app.core.models import User
+from app.core.schemas.user import UserCreate
 
 
 async def get_all_users(

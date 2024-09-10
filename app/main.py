@@ -11,12 +11,12 @@ from app.api.api_v1 import router as api_router
 # Импорт маршрутов
 from app.api.api_v1.endpoints.clicker import router as clicker_router
 from app.api.api_v1.endpoints.products import router as products_router
-from core.config import settings
-from create_fastapi_app import create_app
+from app.core.config import settings
+from app.create_fastapi_app import create_app
 
 # Инициализация FastAPI
 app = FastAPI(
-    title=settings.FastHTMX,
+    title=settings.PROJECT_NAME,
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 

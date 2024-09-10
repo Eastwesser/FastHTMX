@@ -8,7 +8,7 @@ from fastapi.openapi.docs import (
     get_swagger_ui_oauth2_redirect_html,
 )
 
-from core.models import db_helper
+from app.core.models import db_helper
 
 
 @asynccontextmanager
