@@ -2,7 +2,6 @@
 # app/core/config.py
 from pydantic import (
     BaseModel,
-    PostgresDsn,
 )
 from pydantic_settings import (
     BaseSettings,
@@ -60,8 +59,10 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     CSRF_SECRET: str = "8148b7148634eeb37192a3d9ebcac7f877a8db21763f667ddaae3d065ba41ce0"
     DATABASE_URL: str = "postgresql+asyncpg://user:pwd@localhost:5432/app"
+    REDIS_URL: str = "redis://localhost:6379/1"
 
     model_config = SettingsConfigDict(
+        extra='allow',  # Оставить запрет дополнительных полей
         env_file=(".env.template", ".env"),
         case_sensitive=False,
         env_nested_delimiter="__",

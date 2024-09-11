@@ -14,7 +14,7 @@ async def clicker_index(request: Request):
     )
 
 
-@router.post("/inc-click", response_class=HTMLResponse)
+@router.post("/clicker/inc-click", response_class=HTMLResponse)
 async def inc_click(request: Request):
     count = 1  # Логика для инкрементации счётчика
     return templates.TemplateResponse(

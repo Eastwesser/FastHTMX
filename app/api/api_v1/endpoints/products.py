@@ -12,3 +12,14 @@ async def products_list(request: Request):
     return templates.TemplateResponse(
         "products/list.html", {"request": request, "products": products}
     )
+
+
+@router.post("/products/add", response_class=HTMLResponse)
+async def add_product(request: Request, name: str, price: float):
+    # Логика для добавления нового продукта
+    product_list = []
+    new_product = {"name": name, "price": price}
+    product_list.append(new_product)  # Добавляем продукт в список
+    return templates.TemplateResponse(
+        "products/components/item.html", {"request": request, "product": new_product}
+    )

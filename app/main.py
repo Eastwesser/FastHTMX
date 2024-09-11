@@ -9,6 +9,7 @@ from starlette.requests import Request
 from app.api.api_v1 import router as api_router
 from app.api.api_v1.endpoints.clicker import router as clicker_router
 from app.api.api_v1.endpoints.products import router as products_router
+from app.api.api_v1.endpoints.examples import router as examples_router
 from app.core.config import settings
 from app.core.redis import init_redis, close_redis
 from app.create_fastapi_app import create_app
@@ -26,8 +27,6 @@ setup_middleware(app)
 
 # Подключение маршрутов API
 app.include_router(api_router, prefix=settings.API_V1_STR)
-app.include_router(clicker_router, prefix="/clicker")
-app.include_router(products_router, prefix="/products")
 
 # Подключение статики и шаблонов
 app.mount("/static", StaticFiles(directory="app/static"), name="static")

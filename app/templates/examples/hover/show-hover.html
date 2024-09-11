@@ -7,7 +7,7 @@
 {% block body %}
     <h1>Hover text below</h1>
         <div style="font-size: 200%">
-            <span hx-post="{{ url_for('examples_app.hover') }}" hx-trigger="mouseenter" hx-swap="outerHTML">
+            <span hx-post="{{ url_for('examples_app:hover') }}" hx-trigger="mouseenter" hx-swap="outerHTML">
                Hover me!
             </span>
         </div>
