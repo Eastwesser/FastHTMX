@@ -11,6 +11,8 @@ sqlalchemy = {extras = ["asyncio"], version = "^2.0.34"}
 asyncpg = "^0.29.0"
 fastapi-csrf-protect = "^0.3.4"
 starlette-csrf = "^3.0.0"
+celery = "^5.4.0"
+aioredis = "^2.0.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"

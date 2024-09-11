@@ -26,7 +26,8 @@ class ApiPrefix(BaseModel):
 
 
 class DatabaseConfig(BaseModel):
-    url: PostgresDsn
+    # url: PostgresDsn
+    url: str
     echo: bool = False
     echo_pool: bool = False
     pool_size: int = 50
@@ -41,10 +42,24 @@ class DatabaseConfig(BaseModel):
     }
 
 
+class CeleryConfig(BaseModel):
+    broker_url: str = "amqp://guest:guest@localhost:5672//"  # RabbitMQ
+    result_backend: str = "redis://localhost:6379/0"  # Redis
+    task_serializer: str = "json"
+    accept_content: list[str] = ["json"]
+    timezone: str = "UTC"
+    enable_utc: bool = True
+
+
+class RedisConfig(BaseModel):
+    url: str = "redis://localhost:6379/1"
+
+
 class Settings(BaseSettings):
     PROJECT_NAME: str = "FastHTMX Project"
     API_V1_STR: str = "/api/v1"
     CSRF_SECRET: str = "8148b7148634eeb37192a3d9ebcac7f877a8db21763f667ddaae3d065ba41ce0"
+    DATABASE_URL: str = "postgresql+asyncpg://user:pwd@localhost:5432/app"
 
     model_config = SettingsConfigDict(
         env_file=(".env.template", ".env"),
@@ -52,9 +67,12 @@ class Settings(BaseSettings):
         env_nested_delimiter="__",
         env_prefix="APP_CONFIG__",
     )
+
     run: RunConfig = RunConfig()
     api: ApiPrefix = ApiPrefix()
-    db: DatabaseConfig
+    db: DatabaseConfig = DatabaseConfig(url="postgresql+asyncpg://user:pwd@localhost:5432/app")
+    celery: CeleryConfig = CeleryConfig()
+    redis: RedisConfig = RedisConfig()
 
 
 settings = Settings()

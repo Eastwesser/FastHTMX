@@ -5,14 +5,15 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi_htmx import htmx_init
 from starlette.requests import Request
-from starlette_csrf import CSRFMiddleware
 
 from app.api.api_v1 import router as api_router
-# Импорт маршрутов
 from app.api.api_v1.endpoints.clicker import router as clicker_router
 from app.api.api_v1.endpoints.products import router as products_router
 from app.core.config import settings
+from app.core.redis import init_redis, close_redis
 from app.create_fastapi_app import create_app
+from app.celery.celery_app import example_task
+from .core.middleware import setup_middleware
 
 # Инициализация FastAPI
 app = FastAPI(
@@ -20,11 +21,8 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
-# Подключение CSRF Middleware
-app.add_middleware(
-    CSRFMiddleware,
-    secret="8148b7148634eeb37192a3d9ebcac7f877a8db21763f667ddaae3d065ba41ce0",
-)
+# Настройка middleware
+setup_middleware(app)
 
 # Подключение маршрутов API
 app.include_router(api_router, prefix=settings.API_V1_STR)
@@ -43,6 +41,22 @@ htmx_init(templates=templates)
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/run-task")
+async def run_task():
+    result = example_task.delay()
+    return {"task_id": result.id}
+
+
+@app.on_event("startup")
+async def startup():
+    await init_redis()
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    await close_redis()
 
 
 # Пример маршрута
