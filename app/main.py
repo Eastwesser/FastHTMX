@@ -7,13 +7,10 @@ from fastapi_htmx import htmx_init
 from starlette.requests import Request
 
 from app.api.api_v1 import router as api_router
-from app.api.api_v1.endpoints.clicker import router as clicker_router
-from app.api.api_v1.endpoints.products import router as products_router
-from app.api.api_v1.endpoints.examples import router as examples_router
+from app.celery.celery_app import example_task
 from app.core.config import settings
 from app.core.redis import init_redis, close_redis
 from app.create_fastapi_app import create_app
-from app.celery.celery_app import example_task
 from .core.middleware import setup_middleware
 
 # Инициализация FastAPI
