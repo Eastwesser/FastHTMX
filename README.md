@@ -10,8 +10,7 @@ This is a simple FastAPI project template using HTMX for dynamic web application
   - `models/`: (Empty) For future database models and schemas.
   - `templates/`: Contains Jinja2 templates for rendering HTML.
   - `static/`: Directory for static files like CSS, JavaScript, images.
-
-- `tests/`: Contains unit tests for the project.
+  - `tests/`: Contains unit tests for the project.
 
 ## How to Run
 
