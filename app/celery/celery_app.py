@@ -20,5 +20,4 @@ celery_app.conf.update(
 
 @celery_app.task
 def example_task():
-    # Здесь логика твоей задачи
     return "Task completed!"
