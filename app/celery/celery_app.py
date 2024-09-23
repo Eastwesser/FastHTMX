@@ -5,10 +5,9 @@ from app.core.config import settings
 celery_app = Celery(
     "worker",
     broker=settings.celery.broker_url,
-    backend=settings.redis.url  # Используем URL для Redis из settings
+    backend=settings.redis.url
 )
 
-# Настройки Celery
 celery_app.conf.update(
     task_serializer="json",
     accept_content=["json"],
