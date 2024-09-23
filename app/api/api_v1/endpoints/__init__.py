@@ -1,4 +1,4 @@
-# endpoints/ — папка с файлами для конкретных маршрутов API. Например, clicker.py и products.py.
+# endpoints/ — папка с файлами для конкретных маршрутов API - clicker.py и products.py.
 from fastapi import APIRouter
 
 from ....core.config import settings
