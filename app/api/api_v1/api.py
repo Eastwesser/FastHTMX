@@ -1,5 +1,4 @@
 # api.py — основной файл для маршрутизации API. Здесь объединяются все endpoints.
-# app/api/api_v1/api.py
 
 from fastapi import APIRouter
 
