@@ -1,4 +1,4 @@
-# Here we handle all routers
+# Here we handle all possible routers
 from fastapi import APIRouter
 
 from ...core.config import settings
